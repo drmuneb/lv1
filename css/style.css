@@ -1,0 +1,238 @@
+:root {
+    /* Light Theme */
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-card: #ffffff;
+    --text-primary: #262626;
+    --text-secondary: #8e8e8e;
+    --accent: #8A2BE2;
+    /* BlueViolet */
+    --accent-light: #E6E6FA;
+    /* Lavender */
+    --border: #dbdbdb;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --font-en: 'Inter', sans-serif;
+    --font-fa: 'Vazirmatn', sans-serif;
+    --radius: 16px;
+    --header-height: 60px;
+    --footer-height: 60px;
+}
+
+[data-theme="dark"] {
+    /* Lavender Dark Theme */
+    --bg-primary: #0f0f13;
+    /* Very dark lavender-ish gray */
+    --bg-secondary: #1a1a24;
+    --bg-card: #1a1a24;
+    --text-primary: #E6E6FA;
+    /* Lavender */
+    --text-secondary: #a8a8b3;
+    --accent: #B39DDB;
+    /* Lighter purple for dark mode */
+    --accent-light: #2c2c3a;
+    --border: #2c2c3a;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-en);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* Bilingual Typography */
+.bilingual-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.text-fa {
+    font-family: var(--font-fa);
+    direction: rtl;
+    text-align: right;
+    font-size: 1.1em;
+}
+
+.text-en {
+    font-family: var(--font-en);
+    direction: ltr;
+    text-align: left;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+/* Layout */
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    /* Mobile-first constraint for desktop */
+    margin: 0 auto;
+    background-color: var(--bg-primary);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Components */
+.btn {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: var(--font-en);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--accent);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Utilities */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-2 {
+    gap: 8px;
+}
+
+.gap-4 {
+    gap: 16px;
+}
+
+.p-4 {
+    padding: 16px;
+}
+
+.mt-4 {
+    margin-top: 16px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+@media print {
+
+    .no-print,
+    nav,
+    header,
+    .btn {
+        display: none !important;
+    }
+
+    #app {
+        box-shadow: none;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .card {
+        break-inside: avoid;
+        border: 1px solid #ddd;
+        box-shadow: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .text-secondary {
+        color: #555 !important;
+    }
+}
